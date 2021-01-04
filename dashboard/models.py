@@ -4,6 +4,14 @@ from django.db import models
 from core.models import BaseModel
 
 
+class SubTask(BaseModel):
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='subtasks_created')
+    assignee = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='subtasks_assigned')
+    
+    name = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)
+
+
 class Task(BaseModel):
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='tasks_created')
     assignee = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='tasks_assigned')
