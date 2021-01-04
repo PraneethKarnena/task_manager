@@ -25,6 +25,7 @@ class Project(BaseModel):
     description = models.TextField(null=True, blank=True)
     duration_in_months = models.PositiveSmallIntegerField(null=True, blank=True)
     avatar = models.ImageField(null=True, blank=True)
+    tasks = models.ManyToManyField(Task, blank=True)
 
     class Meta:
         ordering = ('name',)
