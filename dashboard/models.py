@@ -11,6 +11,12 @@ class SubTask(BaseModel):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
 
+    class Meta:
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
 
 class Task(BaseModel):
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='tasks_created')
