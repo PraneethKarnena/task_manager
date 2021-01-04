@@ -24,6 +24,7 @@ class Task(BaseModel):
 
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
+    
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
 
