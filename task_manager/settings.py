@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # Project apps
     'api.apps.ApiConfig',
     'core.apps.CoreConfig',
+    'dashboard.apps.DashboardConfig',
 ]
 
 MIDDLEWARE = [
