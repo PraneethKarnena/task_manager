@@ -135,3 +135,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'core.User'
+
+LOGIN_URL = 'core:login'
+LOGOUT_REDIRECT_URL = 'core:login'
