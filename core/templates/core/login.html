@@ -11,6 +11,20 @@
         </div>
     </div>
 
+    {% if messages %}
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center">
+                {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}success{% endif %}"
+                    role="alert">
+                    {% autoescape off %}{{ message }}{% endautoescape %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4 text-center">
