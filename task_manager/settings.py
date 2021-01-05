@@ -138,4 +138,5 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'core.User'
 
 LOGIN_URL = 'core:login'
+LOGIN_REDIRECT_URL = 'dashboard:home'
 LOGOUT_REDIRECT_URL = 'core:login'
