@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 class SubTaskSerializer(serializers.ModelSerializer):
     created_by = UserSerializer(many=False, read_only=True)
     assignee = UserSerializer(many=False)
-    
+
     class Meta:
         model = SubTask
         fields = '__all__'
@@ -22,6 +22,7 @@ class SubTaskSerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     created_by = UserSerializer(many=False, read_only=True)
     assignee = UserSerializer(many=False)
+    subtasks = SubTaskSerializer(many=True)
 
     class Meta:
         model = Task
