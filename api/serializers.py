@@ -8,6 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ('first_name', 'last_name', 'pk')
+        
 
 class ProjectSerializer(serializers.ModelSerializer):
     created_by = UserSerializer(many=False, read_only=True)
