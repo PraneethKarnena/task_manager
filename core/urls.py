@@ -7,5 +7,5 @@ from core import views
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('login/', auth_views.LoginView.as_view(template_name='core/login.html'), name='login'),
-    path('register/', views.RegisterView.as_view(), name='login'),
+    path('register/', views.RegisterView.as_view(), name='register'),
 ]
