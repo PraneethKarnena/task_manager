@@ -10,6 +10,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('first_name', 'last_name', 'pk')
 
 
+class SubTaskSerializer(serializers.ModelSerializer):
+    created_by = UserSerializer(many=False, read_only=True)
+    assignee = UserSerializer(many=False)
+    
+    class Meta:
+        model = SubTask
+        fields = '__all__'
+
+
 class TaskSerializer(serializers.ModelSerializer):
     created_by = UserSerializer(many=False, read_only=True)
     assignee = UserSerializer(many=False)
