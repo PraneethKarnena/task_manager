@@ -1,0 +1,95 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Register | Task Manager{% endblock %}
+
+{% block content %}
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <h3>Register</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            {% if form.errors %}
+                {% for error in form.non_field_errors %}
+                <div class="alert alert-danger"
+                    role="alert">
+                    {{ error|escape }}
+                </div>
+                {% endfor %}
+                {% for error in form.first_name.errors %}
+                <div class="alert alert-danger"
+                    role="alert">
+                    {{ error|escape }}
+                </div>
+                {% endfor %}
+                {% for error in form.last_name.errors %}
+                <div class="alert alert-danger"
+                    role="alert">
+                    {{ error|escape }}
+                </div>
+                {% endfor %}
+                {% for error in form.password1.errors %}
+                <div class="alert alert-danger"
+                    role="alert">
+                    {{ error|escape }}
+                </div>
+                {% endfor %}
+                {% for error in form.password2.errors %}
+                <div class="alert alert-danger"
+                    role="alert">
+                    {{ error|escape }}
+                </div>
+                {% endfor %}
+                {% for error in form.email.errors %}
+                <div class="alert alert-danger"
+                    role="alert">
+                    {{ error|escape }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input name="first_name" type="text" class="form-control" placeholder="First Name"
+                        required>
+                </div>
+                <div class="form-group">
+                    <input name="last_name" type="text" class="form-control" placeholder="Last Name"
+                        required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    <input type="hidden" name="username" value="" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password1" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password2" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('document').ready(function () {
+
+        // Add new username field from email
+        $('body').on('change', 'input[name="email"]', function () {
+            $('input[name="username"]').val($('input[name="email"]').val());
+        });
+    });
+</script>
+{% endblock %}
