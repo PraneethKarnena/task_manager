@@ -31,8 +31,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     created_by = UserSerializer(many=False, read_only=True)
-    tasks = TaskSerializer(many=True)
 
     class Meta:
         model = Project
-        fields = '__all__'
+        exclude = ['tasks']
