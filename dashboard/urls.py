@@ -5,4 +5,5 @@ from dashboard import views
 
 urlpatterns = [
     path('', login_required(views.DashboardView.as_view()), name='dashboard'),
+    path('projects/<uuid:pk>/delete/', login_required(views.ProjectDeleteView.as_view()), name='dashboard'),
 ]
