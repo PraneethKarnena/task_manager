@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Dashboard | Task Manager{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row mb-3">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+            <h3>Dashboard</h3>
+        </div>
+    </div>
+
+    <div id="message"></div>
+
+    <table id="projects" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Created By</th>
+                <th>Duration (in months)</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<script>
+    $('document').ready(function () {
+
+        // List all projects
+        // function getAllProjects(){
+        //     $.get({
+        //         url: "{% url 'api:projects' %}",
+        //         dataType: "json",
+        //         error: function(data){
+        //             var htmlMessage = `
+        //                             <div class="row">
+        //                             <div class="col-lg-3"></div>
+        //                             <div class="col-lg-6 text-center">
+        //                                 <div class="alert alert-danger" role="alert">Error</div>
+        //                             </div>
+        //                             </div>
+        //             `;
+        //         },
+        //         success: function(data){},
+        //     });
+        // }
+
+        $('#projects').DataTable({
+            ajax: {
+                url: "{% url 'api:projects' %}",
+                // dataSrc: "",
+            },
+            // columns: []
+        });
+
+    });
+</script>
+{% endblock %}
