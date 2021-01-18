@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Dashboard | Task Manager{% endblock %}
+
+{% block content %}
+<script>
+    $('document').ready(function () {
+
+        // Delete project
+        function deleteProject(pk){
+            $.ajax({
+                url: "{% url 'api:project_detail' pk=pk %}",
+                method: "DELETE",
+                dataType: "json",
+                headers: {
+                    "X-CSRFToken": "{{csrf_token}}",
+                },
+                error: function(data){},
+                success: function(){
+                    window.location.replace("{% url 'dashboard:dashboard' %}");
+                },
+            });
+        }
+        deleteProject("{{pk}}");
+
+    });
+</script>
+{% endblock %}
